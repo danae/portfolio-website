@@ -1,0 +1,24 @@
+{
+  "type": "module",
+  "name": "@danae/portfolio-website",
+  "version": "0.1.0",
+  "author": "Danae Dekker <hello@danaedekker.com>",
+  "description": "My personal portfolio website",
+  "license": "GPL-3.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danae/portfolio-website.git"
+  },
+  "homepage": "https://danaedekker.com/",
+  "scripts": {
+    "build": "npx @11ty/eleventy",
+    "dev": "npx @11ty/eleventy --serve"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "~3.1.2",
+    "@fortawesome/fontawesome-free": "~6.6.0",
+    "bulma": "~1.0.2",
+    "jquery": "~3.7.1",
+    "sass": "~1.80.6"
+  }
+}
