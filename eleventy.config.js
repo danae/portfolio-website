@@ -12,6 +12,7 @@ function compileSass(inputContent, inputPath) {
 		loadPaths: [
 			parsed.dir || ".",
 			this.config.dir.includes,
+			'./node_modules',
 		]
 	});
 
