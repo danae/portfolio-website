@@ -1,6 +1,35 @@
 // Import the Bulma framework
 @use 'bulma';
 
+// Import the Font Awesome icons
+@import '@fort-awesome/font-awesome/css/fontawesome.min.css';
+@import '@fort-awesome/font-awesome/css/solid.min.css';
+@import '@fort-awesome/font-awesome/css/brands.min.css';
+
+
+// Body layout
+body {
+  // Set the flex layout
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  // Black bar layout
+  & > .bar {
+    flex-grow: 0;
+    flex-shrink: 0;
+
+    width: 100%;
+    height: 2.5rem;
+    background-color: var(--bulma-dark);
+  }
+
+  // Main content layout
+  & > .main-content {
+    flex-grow: 1;
+    flex-shrink: 0;
+  }
+}
 
 // Content styling
 .content {

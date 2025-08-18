@@ -1,11 +1,12 @@
+import esbuild from "esbuild";
 import path from "node:path";
 import * as sass from "sass";
 
 
-// Function to compile Sass files
-function compileSass(inputContent, inputPath) {
+// Function to compile SCSS files
+function compileSCSS(inputContent, inputPath) {
 	let parsed = path.parse(inputPath);
-	if (parsed.name.startsWith("_"))
+	if (!parsed.name.startsWith("index"))
 		return;
 
 	let result = sass.compileString(inputContent, {
@@ -17,7 +18,24 @@ function compileSass(inputContent, inputPath) {
 	});
 
 	this.addDependencies(inputPath, result.loadedUrls);
-	return async (data) => result.css;
+	return async () => result.css;
+}
+
+// Function to compile JavaScript files
+async function compileJS(inputContent, inputPath) {
+	let parsed = path.parse(inputPath);
+	if (!parsed.name.startsWith("index"))
+		return;
+
+	let result = await esbuild.build({
+		target: 'es2020',
+		entryPoints: [inputPath],
+		minify: true,
+		bundle: true,
+		write: false,
+	});
+
+	return async () => result.outputFiles[0].text;
 }
 
 
@@ -27,7 +45,11 @@ export default async function (eleventyConfig) {
 	eleventyConfig.setInputDirectory("src");
 	eleventyConfig.setLayoutsDirectory("_layouts");
 
-	// Add template handling for Sass files
-	eleventyConfig.addExtension("scss", { outputFileExtension: "css", useLayouts: false, compile: compileSass });
-	eleventyConfig.addTemplateFormats("scss");
+	// Add passthrough copies
+	eleventyConfig.addPassthroughCopy("assets");
+
+	// Add custom template handling
+	eleventyConfig.addExtension("scss", { outputFileExtension: "css", useLayouts: false, compile: compileSCSS });
+	eleventyConfig.addExtension("js", { outputFileExtension: "js", useLayouts: false, compile: compileJS });
+	eleventyConfig.addTemplateFormats(["scss", "js"]);
 };
