@@ -5,15 +5,30 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!-- Shortcut icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+    <link rel="icon" type="image/png" href="/assets/images/logo.png" sizes="512x512">
+
     <!-- Title -->
-    <title>{{ title }}</title>
+    <title>{{ title + " / Danae Dekker" if title else "Danae Dekker" }}</title>
     
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/index.css">
+
+    <!-- Scripts -->
+    <script defer src="/js/index.js"></script>
   </head>
   
   <body>
+    <!-- Black bar -->
+    <div class="bar"></div>
+
     <!-- Main content -->
-    {{ content | safe }}
+    <div class="main-content">
+      {{ content | safe }}
+    </div>
+
+    <!-- Black bar -->
+    <div class="bar"></div>
   </body>
 </html>

@@ -1,0 +1,10 @@
+---
+layout: layout.njk
+includeNavbarLogo: true
+---
+
+<main class="container">
+  {% include "navbar.njk" %}
+  
+  {{ content | safe }}
+</main>

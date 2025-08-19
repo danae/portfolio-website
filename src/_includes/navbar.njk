@@ -1,0 +1,22 @@
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="navbar-brand">
+    {% if includeNavbarLogo %}
+      <!-- Logo -->
+      <a class="navbar-item py-0" href="/">
+        <img src="/assets/images/logo.svg">
+      </a>
+    {% endif %}
+
+    <!-- Links to pages -->
+    {% for title, url in pages %}
+      <div class="navbar-item">
+        {% if page.url.startsWith(url) %}
+          <a class="active" href="{{ url }}">{{ title }}</a>
+        {% else %}
+          <a href="{{ url }}">{{ title }}</a>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</nav>

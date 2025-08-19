@@ -1,10 +1,8 @@
 // Import the Bulma framework
 @use 'bulma';
 
-// Import the Font Awesome icons
-@import '@fort-awesome/font-awesome/css/fontawesome.min.css';
-@import '@fort-awesome/font-awesome/css/solid.min.css';
-@import '@fort-awesome/font-awesome/css/brands.min.css';
+// Import submodules
+@use 'navbar';
 
 
 // Body layout
@@ -29,6 +27,11 @@ body {
     flex-grow: 1;
     flex-shrink: 0;
   }
+}
+
+// Container layout
+.container {
+  max-width: 768px !important;
 }
 
 // Content styling
